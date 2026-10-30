@@ -1,0 +1,92 @@
+Eight-node shunt free network - original - Eq. (41)
+* Copyright (c) 2026 Ashkan Ashrafi, San Diego State University (ashrafi@sdsu.edu).
+* Part of the code for "A Minimum-Self-Conductance Characterization of Kron
+* Reduction in Resistive Networks," IEEE Trans. Circuits Syst. I (2026).
+* Released under the MIT License; see the LICENSE file in this repository.
+* All R values are RESISTANCES IN OHMS; the paper labels conductances in siemens.
+* Terminals 1..5 are voltage driven. Node 0 is the common reference.
+* Original nodes 6..8 have no external current injections.
+* Positive paper injection q_k = -i(Vdrivek), with Vdrivek from k to 0.
+* Run from this folder after creating spice_results, or use verify_spice.py.
+* Each basis test clamps the other four terminals to zero volts.
+.options reltol=1e-12 abstol=1e-14 vntol=1e-12
+
+R12 1 2 {1/2}
+R16 1 6 1
+R23 2 3 {1/3}
+R27 2 7 {1/2}
+R34 3 4 1
+R45 4 5 {1/2}
+R48 4 8 1
+R58 5 8 {1/3}
+R67 6 7 1
+R78 7 8 {1/2}
+
+Vdrive1 1 0 DC 0
+Vdrive2 2 0 DC 0
+Vdrive3 3 0 DC 0
+Vdrive4 4 0 DC 0
+Vdrive5 5 0 DC 0
+
+.control
+set filetype=ascii
+set numdgt=15
+
+alter Vdrive1 1
+alter Vdrive2 0
+alter Vdrive3 0
+alter Vdrive4 0
+alter Vdrive5 0
+op
+write spice_results/eight_node_shunt_free_original_basis1.raw all
+
+alter Vdrive1 0
+alter Vdrive2 1
+alter Vdrive3 0
+alter Vdrive4 0
+alter Vdrive5 0
+op
+write spice_results/eight_node_shunt_free_original_basis2.raw all
+
+alter Vdrive1 0
+alter Vdrive2 0
+alter Vdrive3 1
+alter Vdrive4 0
+alter Vdrive5 0
+op
+write spice_results/eight_node_shunt_free_original_basis3.raw all
+
+alter Vdrive1 0
+alter Vdrive2 0
+alter Vdrive3 0
+alter Vdrive4 1
+alter Vdrive5 0
+op
+write spice_results/eight_node_shunt_free_original_basis4.raw all
+
+alter Vdrive1 0
+alter Vdrive2 0
+alter Vdrive3 0
+alter Vdrive4 0
+alter Vdrive5 1
+op
+write spice_results/eight_node_shunt_free_original_basis5.raw all
+
+alter Vdrive1 1
+alter Vdrive2 -0.5
+alter Vdrive3 2
+alter Vdrive4 0.25
+alter Vdrive5 -1
+op
+write spice_results/eight_node_shunt_free_original_mixed.raw all
+
+alter Vdrive1 1
+alter Vdrive2 1
+alter Vdrive3 1
+alter Vdrive4 1
+alter Vdrive5 1
+op
+write spice_results/eight_node_shunt_free_original_common.raw all
+quit
+.endc
+.end

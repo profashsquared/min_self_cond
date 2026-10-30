@@ -1,0 +1,7 @@
+# Dependencies for min_self_conductance_kron.py (c) 2026 Ashkan Ashrafi, SDSU; MIT License.
+# Minimum versions tested. The Monte Carlo study and exact LPs require a
+# working Gurobi installation and license; --self-test needs only NumPy/SciPy.
+numpy>=1.24
+scipy>=1.10
+matplotlib>=3.6
+gurobipy>=11.0

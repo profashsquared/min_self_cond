@@ -1,0 +1,33 @@
+Shunted original circuit - simultaneous nonzero DC excitation
+* Copyright (c) 2026 Ashkan Ashrafi, San Diego State University (ashrafi@sdsu.edu).
+* Part of the code for "A Minimum-Self-Conductance Characterization of Kron
+* Reduction in Resistive Networks," IEEE Trans. Circuits Syst. I (2026).
+* Released under the MIT License; see the LICENSE file in this repository.
+* All resistor values are in ohms; all sources share node 0 as reference.
+* Injected current into the resistor network is -i(Vdrivek).
+.options reltol=1e-12 abstol=1e-14 vntol=1e-12
+R12 1 2 {1/2}
+R16 1 6 1
+R23 2 3 {1/3}
+R27 2 7 {1/2}
+R34 3 4 1
+R45 4 5 {1/2}
+R48 4 8 1
+R58 5 8 {1/3}
+R67 6 7 1
+R78 7 8 {1/2}
+R2g 2 0 1
+R7g 7 0 {1/2}
+Vdrive1 1 0 DC 1
+Vdrive2 2 0 DC -0.5
+Vdrive3 3 0 DC 2
+Vdrive4 4 0 DC 0.25
+Vdrive5 5 0 DC -1
+.control
+set numdgt=15
+op
+print v(1) v(2) v(3) v(4) v(5)
+print i(Vdrive1) i(Vdrive2) i(Vdrive3) i(Vdrive4) i(Vdrive5)
+quit
+.endc
+.end
