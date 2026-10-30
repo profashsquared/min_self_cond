@@ -1,33 +1,13 @@
-<!--
 Copyright (c) 2026 Ashkan Ashrafi, Department of Electrical and Computer
 Engineering, San Diego State University (ashrafi@sdsu.edu).
 Code for "A Minimum-Self-Conductance Characterization of Kron Reduction in
 Resistive Networks," IEEE Trans. Circuits Syst. I (2026). MIT License.
--->
-# Code and data for "A Minimum-Self-Conductance Characterization of Kron Reduction in Resistive Networks"
 
 
-> **Repository note.** This repository contains the code only. The stored
-> output of the reported run (the `results/revision_kfold_vq/` folder and the
-> figure files referred to below) is not included; running the commands in
-> the *Running* section regenerates it.
+# Code for "A Minimum-Self-Conductance Characterization of Kron Reduction in Resistive Networks"
 
-Manuscript TCAS-I-02087-2026 (revised version). This package contains the script
-that produced every numerical result in Section VI of the revised manuscript
-(Tables I-II, Figs. 5-6, and the exact-data, uniqueness, and arithmetic-audit
-statements), the complete output of the run reported in the paper, and the
-SPICE verification referred to in the response to Reviewer 4.
 
-## Contents
-
-| Path | Purpose |
-|---|---|
-| `min_self_conductance_kron.py` | The experiment script (version 1.3.0-kfold). The run reported in the paper used this file under its original name `revision_benchmark_kfold.py` (SHA-256 `d52be8853e0c86370f535a1288de16e944ab7b6e24df31ce233b7f1d6c0eb913`); this repository copy differs only by the renaming and the license header. |
-| `requirements.txt` | Python dependencies (NumPy, SciPy, Matplotlib, gurobipy >= 11). |
-| `results/revision_kfold_vq/` | Complete output of the reported run (M = 10 and M = 1000): summary CSVs, exact-data and uniqueness results, the rational-arithmetic audit, `metadata.json` (software versions, seed, solver parameters), figures, and the raw fitted matrices for all 7,200 finite-SNR trials in `M*/checkpoints/*.npz`. |
-| `spice_verification/` | ngspice netlists, driver script, and outputs supporting the circuit-level equivalence check in the response to Reviewer 4 (not used for any figure in the manuscript). |
-
-## What the script does
+# What the script does
 
 The script embeds the eight-node branch list (Fig. 1) and the two shunts of
 Fig. 3, reconstructs both conductance matrices with exact rational arithmetic,
